@@ -1,10 +1,20 @@
 pipeline {
-    agent { docker { image 'python:latest' } }
+    agent any
     stages {
-        stage('build') {
+        stage("build") {
             steps {
-                sh 'python --version'
+                echo "Building Stage"
             }
         }
-    }
+        
+        stage("test") {
+            steps {
+                echo "Testing Stage"
+        }
+        stage("deploy") {
+            steps {
+                echo "Deploying Stage"
+        }
+        }
+    }   
 }
