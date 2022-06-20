@@ -2,7 +2,8 @@ def gv
 pipeline {
     agent any
     parameters{
-        choice(name: "NEW_VERSION",choices:["1.3.0","1.4.0","1.1.0"],defaultValue: "1.1.0")
+        choice(name: "NEW_VERSION",choices:["1.3.0","1.4.0","1.1.0"], defaultValue: "1.1.0")
+        booleanParam (name: "execTests", defaultValue: true)
     }
     stages {
         stage("init") {
@@ -23,7 +24,7 @@ pipeline {
         stage("test") {
             when{
                 expression{
-                    BRANCH_NAME == "main" || BRANCH_NAME == "master "
+                    ${booleanParam} == true
                 }
             }
             steps {
