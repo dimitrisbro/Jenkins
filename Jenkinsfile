@@ -24,7 +24,7 @@ pipeline {
         stage("test") {
             when{
                 expression{
-                    ${execTests} == true
+                    params.execTests == true
                 }
             }
             steps {
