@@ -2,7 +2,7 @@ def gv
 pipeline {
     agent any
     parameters{
-        choice(name: "NEW_VERSION",choices:["1.3.0","1.4.0"],defaultValue: "1.1.0")
+        choice(name: "NEW_VERSION",choices:["1.3.0","1.4.0","1.1.0"],defaultValue: "1.1.0")
     }
     stages {
         stage("init") {
